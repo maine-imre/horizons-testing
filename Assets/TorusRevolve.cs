@@ -45,7 +45,14 @@ public class TorusRevolve : MonoBehaviour
     /// <returns></returns>
     private Vector3 torusPosition(float alpha, float beta)
     {
-        torusPosition = new Vector3(((radius1 * Math.Cos(alpha), 0, Math.Sin(alpha)));
+        Vector3 vectorMap;
+        Vector3 firstPosition = new Vector3(radius1 * Mathf.Cos(alpha), 0, radius1 * Mathf.Sin(alpha));
+        Vector3 secondPosition = new Vector3(radius2 * Mathf.Cos(beta), radius2 * Mathf.Sin(beta), 0);
+        Vector3 sumPosition = firstPosition + secondPosition;
+
+        vectorMap = (Quaternion.FromToRotation(Vector3.right, firstPosition)) * Vector3.right;
+
+        return vectorMap;
     }
 /// <summary>
 /// Finds the vertex indicies for the kth triangle
@@ -56,6 +63,13 @@ public class TorusRevolve : MonoBehaviour
 /// <returns></returns>
     private int triangle(int k, int m)
     {
-        
+        return triangleIndex(k)[m];
+    }
+
+    private int[] triangleIndex(int k)
+    {
+        int[] tri = new int[3];
+
+        return tri;
     }
 }
